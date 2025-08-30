@@ -162,6 +162,11 @@
         </div>
     </section>
 
+
+    <div id="faq-container">
+    <!-- FAQs will be loaded here automatically -->
+</div>
+
     <!-- Footer -->
     <footer class="bg-gray-950 py-8 px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto text-center">
@@ -178,5 +183,49 @@
             <p class="text-gray-400">© 2024 HaulRx. The Smartest Way to Haul.</p>
         </div>
     </footer>
+
+<script>
+// Fetch and display FAQs dynamically
+async function loadFAQs() {
+    try {
+        const response = await fetch('https://app--haul-rx-your-hauling-solution-96799642.base44.app/functions/getFAQs');
+        const data = await response.json();
+        
+        if (data.success) {
+            displayFAQs(data.faqs);
+        }
+    } catch (error) {
+        console.error('Failed to load FAQs:', error);
+    }
+}
+
+function displayFAQs(faqs) {
+    const container = document.getElementById('faq-container');
+    if (!container) return;
+    
+    container.innerHTML = faqs.map(faq => `
+        <div class="faq-item" style="margin-bottom: 16px; border: 1px solid #ddd; border-radius: 8px;">
+            <div class="faq-question" style="padding: 16px; background: #f8f9fa; cursor: pointer; font-weight: bold;">
+                ${faq.question}
+            </div>
+            <div class="faq-answer" style="padding: 16px; display: none;">
+                ${faq.answer}
+            </div>
+        </div>
+    `).join('');
+    
+    // Add click handlers
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+        });
+    });
+}
+
+// Load FAQs when page loads
+document.addEventListener('DOMContentLoaded', loadFAQs);
+</script>
+    
 </body>
 </html>
