@@ -40,6 +40,19 @@
         .hero-gradient {
             background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
         }
+
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .two-column-layout {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -62,7 +75,7 @@
                 Fast, reliable, and efficient hauling solutions for everyone.
             </p>
             
-            <a href="https://app--haul-rx-your-hauling-solution-96799642.base44.app" 
+            <a href__="https://app--haul-rx-your-hauling-solution-96799642.base44.app" 
                class="launch-button inline-block px-8 py-4 text-lg font-semibold text-gray-900 rounded-lg no-underline bg-green-500 hover:bg-green-600">
                               Launch HaulRx App
             </a>
@@ -73,99 +86,107 @@
         </div>
     </section>
 
-    <!-- Business Information Section -->
+    <!-- Two Column Content Section -->
     <section class="py-16 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-white text-center mb-12">Business Information & Policies</h2>
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-white text-center mb-12">Business Information & FAQs</h2>
             
-            <div class="space-y-8">
-                <!-- Our Services Card -->
-                <div class="bg-gray-800/50 border border-gray-700 rounded-lg">
-                    <div class="p-6 flex items-center gap-4 border-b border-gray-700">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-400">
-                            <path d="M5 18H3c-1.1 0-2-.9-2-2V7a2 2 0 0 1 2-2h10c1.1 0 2 .9 2 2v4"/>
-                            <path d="M18 18h2c1.1 0 2-.9 2-2v-5a2 2 0 0 0-2-2h-2"/>
-                            <path d="M2 15h16"/>
-                            <circle cx="7" cy="18" r="2"/>
-                            <circle cx="17" cy="18" r="2"/>
-                        </svg>
-                        <h3 class="text-white text-xl font-semibold">Our Services</h3>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-gray-300">
-                            HaulRx is a marketplace platform that connects customers who need junk removal services with professional, local hauling companies. We provide the technology to facilitate these connections efficiently.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Customer Service Card -->
-                <div class="bg-gray-800/50 border border-gray-700 rounded-lg">
-                    <div class="p-6 flex items-center gap-4 border-b border-gray-700">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-400">
-                            <rect width="20" height="16" x="2" y="4" rx="2"/>
-                            <path d="m22 7-10 5L2 7"/>
-                        </svg>
-                        <h3 class="text-white text-xl font-semibold">Customer Service</h3>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-gray-300 mb-4">
-                            Need help or have a technical question about the HaulRx app? Please contact our customer service team.
-                        </p>
-                        <p class="font-semibold text-white">
-                            Email: <a href__="mailto:haulrx.app@gmail.com" class="text-blue-400">haulrx.app@gmail.com</a>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Policies Card -->
-                <div class="bg-gray-800/50 border border-gray-700 rounded-lg">
-                    <div class="p-6 flex items-center gap-4 border-b border-gray-700">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400">
-                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
-                            <polyline points="14,2 14,8 20,8"/>
-                        </svg>
-                        <h3 class="text-white text-xl font-semibold">Cancellation, Refund, and Dispute Policy</h3>
-                    </div>
-                    <div class="p-6">
-                        <div class="space-y-3 text-gray-300">
-                            <p>
-                                HaulRx serves as a connection platform. We do not handle payments, refunds, disputes, or cancellations for the actual hauling services rendered. These arrangements are made directly between the customer and the hauler.
+            <div class="two-column-layout">
+                <!-- Left Column - Business Information & Policies -->
+                <div class="space-y-8">
+                    <h3 class="text-2xl font-semibold text-white mb-6">Policies & Information</h3>
+                    
+                    <!-- Our Services Card -->
+                    <div class="bg-gray-800/50 border border-gray-700 rounded-lg">
+                        <div class="p-6 flex items-center gap-4 border-b border-gray-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-400">
+                                <path d="M5 18H3c-1.1 0-2-.9-2-2V7a2 2 0 0 1 2-2h10c1.1 0 2 .9 2 2v4"/>
+                                <path d="M18 18h2c1.1 0 2-.9 2-2v-5a2 2 0 0 0-2-2h-2"/>
+                                <path d="M2 15h16"/>
+                                <circle cx="7" cy="18" r="2"/>
+                                <circle cx="17" cy="18" r="2"/>
+                            </svg>
+                            <h4 class="text-white text-xl font-semibold">Our Services</h4>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-300">
+                                HaulRx is a marketplace platform that connects customers who need junk removal services with professional, local hauling companies. We provide the technology to facilitate these connections efficiently.
                             </p>
-                            <ul class="list-disc list-inside pl-4 space-y-2">
-                                <li><span class="font-semibold text-white">For Customers:</span> All payments for junk removal are handled directly with the hauling company. Any issues regarding service quality, pricing, cancellations, or refunds must be resolved with the hauler you hired.</li>
-                                <li><span class="font-semibold text-white">For Haulers:</span> Hauling companies pay a subscription fee to access the HaulRx platform and its leads. A refund for this subscription fee can be requested within 30 days of the initial subscription start date by contacting our customer service.</li>
-                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Customer Service Card -->
+                    <div class="bg-gray-800/50 border border-gray-700 rounded-lg">
+                        <div class="p-6 flex items-center gap-4 border-b border-gray-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-400">
+                                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                                <path d="m22 7-10 5L2 7"/>
+                            </svg>
+                            <h4 class="text-white text-xl font-semibold">Customer Service</h4>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-300 mb-4">
+                                Need help or have a technical question about the HaulRx app? Please contact our customer service team.
+                            </p>
+                            <p class="font-semibold text-white">
+                                Email: <a href__="mailto:haulrx.app@gmail.com" class="text-blue-400">haulrx.app@gmail.com</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Policies Card -->
+                    <div class="bg-gray-800/50 border border-gray-700 rounded-lg">
+                        <div class="p-6 flex items-center gap-4 border-b border-gray-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400">
+                                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                                <polyline points="14,2 14,8 20,8"/>
+                            </svg>
+                            <h4 class="text-white text-xl font-semibold">Cancellation, Refund, and Dispute Policy</h4>
+                        </div>
+                        <div class="p-6">
+                            <div class="space-y-3 text-gray-300">
+                                <p>
+                                    HaulRx serves as a connection platform. We do not handle payments, refunds, disputes, or cancellations for the actual hauling services rendered. These arrangements are made directly between the customer and the hauler.
+                                </p>
+                                <ul class="list-disc list-inside pl-4 space-y-2">
+                                    <li><span class="font-semibold text-white">For Customers:</span> All payments for junk removal are handled directly with the hauling company. Any issues regarding service quality, pricing, cancellations, or refunds must be resolved with the hauler you hired.</li>
+                                    <li><span class="font-semibold text-white">For Haulers:</span> Hauling companies pay a subscription fee to access the HaulRx platform and its leads. A refund for this subscription fee can be requested within 30 days of the initial subscription start date by contacting our customer service.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Promotions Card -->
+                    <div class="bg-gray-800/50 border border-gray-700 rounded-lg">
+                        <div class="p-6 flex items-center gap-4 border-b border-gray-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-red-400">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                            <h4 class="text-white text-xl font-semibold">Promotions: Terms & Conditions</h4>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-300 mb-4">
+                                All promotional offers, discounts, or trials are subject to our terms and conditions. Promotions are offered at the discretion of HaulRx and may be modified or discontinued at any time. For any questions regarding a promotion, please contact our support team.
+                            </p>
+                            <p class="font-semibold text-white">
+                                Support Email: <a href__="mailto:haulrx.app@gmail.com" class="text-blue-400">haulrx.app@gmail.com</a>
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Promotions Card -->
-                <div class="bg-gray-800/50 border border-gray-700 rounded-lg">
-                    <div class="p-6 flex items-center gap-4 border-b border-gray-700">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-red-400">
-                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                            <line x1="8" y1="21" x2="16" y2="21"/>
-                            <line x1="12" y1="17" x2="12" y2="21"/>
-                        </svg>
-                        <h3 class="text-white text-xl font-semibold">Promotions: Terms & Conditions</h3>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-gray-300 mb-4">
-                            All promotional offers, discounts, or trials are subject to our terms and conditions. Promotions are offered at the discretion of HaulRx and may be modified or discontinued at any time. For any questions regarding a promotion, please contact our support team.
-                        </p>
-                        <p class="font-semibold text-white">
-                            Support Email: <a href__="mailto:haulrx.app@gmail.com" class="text-blue-400">haulrx.app@gmail.com</a>
-                        </p>
+                <!-- Right Column - FAQ Section -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-white mb-6">Frequently Asked Questions</h3>
+                    <div id="faq-container">
+                        <p style="text-align: center; color: #a0aec0; padding: 2rem;">Loading FAQs...</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-
-    <div id="faq-container">
-    <!-- FAQs will be loaded here automatically -->
-</div>
 
     <!-- Footer -->
     <footer class="bg-gray-950 py-8 px-4 sm:px-6 lg:px-8">
@@ -184,48 +205,72 @@
         </div>
     </footer>
 
-<script>
-// Fetch and display FAQs dynamically
-async function loadFAQs() {
-    try {
-        const response = await fetch('https://app--haul-rx-your-hauling-solution-96799642.base44.app/functions/getFAQs');
-        const data = await response.json();
-        
-        if (data.success) {
-            displayFAQs(data.faqs);
+    <!-- FAQ JavaScript -->
+    <script>
+    async function loadFAQs() {
+        try {
+            const response = await fetch('https://app--haul-rx-your-hauling-solution-96799642.base44.app/functions/getFAQs');
+            const data = await response.json();
+            
+            if (data.success && data.faqs.length > 0) {
+                displayFAQs(data.faqs);
+            } else {
+                document.getElementById('faq-container').innerHTML = '<p style="text-align: center; color: #a0aec0; padding: 2rem;">No FAQs available.</p>';
+            }
+        } catch (error) {
+            console.error('Failed to load FAQs:', error);
+            document.getElementById('faq-container').innerHTML = '<p style="text-align: center; color: #a0aec0; padding: 2rem;">Failed to load FAQs.</p>';
         }
-    } catch (error) {
-        console.error('Failed to load FAQs:', error);
     }
-}
 
-function displayFAQs(faqs) {
-    const container = document.getElementById('faq-container');
-    if (!container) return;
-    
-    container.innerHTML = faqs.map(faq => `
-        <div class="faq-item" style="margin-bottom: 16px; border: 1px solid #ddd; border-radius: 8px;">
-            <div class="faq-question" style="padding: 16px; background: #f8f9fa; cursor: pointer; font-weight: bold;">
-                ${faq.question}
+    function displayFAQs(faqs) {
+        const container = document.getElementById('faq-container');
+        
+        container.innerHTML = faqs.map((faq, index) => `
+            <div class="faq-item bg-gray-800/50 border border-gray-700 rounded-lg mb-4 overflow-hidden">
+                <div class="faq-question" onclick="toggleFAQ(${index})" style="
+                    padding: 1rem; 
+                    cursor: pointer; 
+                    font-weight: 600;
+                    border-bottom: 1px solid #4a5568;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    color: white;
+                    background: rgba(45, 55, 72, 0.5);
+                ">
+                    <span>${faq.question}</span>
+                    <span id="icon-${index}" style="font-size: 18px; color: #68d391;">+</span>
+                </div>
+                <div id="answer-${index}" class="faq-answer" style="
+                    padding: 1rem; 
+                    background: rgba(45, 55, 72, 0.3);
+                    display: none;
+                    line-height: 1.6;
+                    color: #e2e8f0;
+                ">
+                    ${faq.answer}
+                </div>
             </div>
-            <div class="faq-answer" style="padding: 16px; display: none;">
-                ${faq.answer}
-            </div>
-        </div>
-    `).join('');
-    
-    // Add click handlers
-    document.querySelectorAll('.faq-question').forEach(question => {
-        question.addEventListener('click', () => {
-            const answer = question.nextElementSibling;
-            answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
-        });
-    });
-}
+        `).join('');
+    }
 
-// Load FAQs when page loads
-document.addEventListener('DOMContentLoaded', loadFAQs);
-</script>
+    function toggleFAQ(index) {
+        const answer = document.getElementById(`answer-${index}`);
+        const icon = document.getElementById(`icon-${index}`);
+        
+        if (answer.style.display === 'none') {
+            answer.style.display = 'block';
+            icon.textContent = '−';
+        } else {
+            answer.style.display = 'none';
+            icon.textContent = '+';
+        }
+    }
+
+    // Load FAQs when page loads
+    document.addEventListener('DOMContentLoaded', loadFAQs);
+    </script>
     
 </body>
 </html>
