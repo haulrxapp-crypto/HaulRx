@@ -53,6 +53,24 @@
                 gap: 1rem;
             }
         }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        .faq-answer.open {
+            max-height: 500px; /* Adjust as needed */
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .faq-question .icon {
+            transition: transform 0.3s ease-out;
+        }
+        .faq-question.open .icon {
+            transform: rotate(45deg);
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -75,7 +93,7 @@
                 Fast, reliable, and efficient hauling solutions for everyone.
             </p>
             
-            <a href="https://app--haul-rx-your-hauling-solution-96799642.base44.app" 
+            <a href__="https://app--haul-rx-your-hauling-solution-96799642.base44.app" 
                class="launch-button inline-block px-8 py-4 text-lg font-semibold text-gray-900 rounded-lg no-underline bg-green-500 hover:bg-green-600">
                               Launch HaulRx App
             </a>
@@ -180,7 +198,7 @@
                 <!-- Right Column - FAQ Section -->
                 <div>
                     <h3 class="text-2xl font-semibold text-white mb-6">Frequently Asked Questions</h3>
-                    <div id="faq-container">
+                    <div id="faq-container" class="space-y-4">
                         <p style="text-align: center; color: #a0aec0; padding: 2rem;">Loading FAQs...</p>
                     </div>
                 </div>
@@ -207,32 +225,36 @@
 
     <!-- FAQ JavaScript -->
     <script>
+    const API_URL = 'https://app--haul-rx-your-hauling-solution-96799642.base44.app/api/functions/getFAQs';
+
     async function loadFAQs() {
+        const container = document.getElementById('faq-container');
         try {
-            const response = await fetch('https://app--haul-rx-your-hauling-solution-96799642.base44.app/functions/getFAQs');
+            const response = await fetch(API_URL);
+            if (!response.ok) {
+                throw new Error(`Network response was not ok: ${response.statusText}`);
+            }
             const data = await response.json();
             
             if (data.success && data.faqs.length > 0) {
-                displayFAQs(data.faqs);
+                displayFAQs(data.faqs, container);
             } else {
-                document.getElementById('faq-container').innerHTML = '<p style="text-align: center; color: #a0aec0; padding: 2rem;">No FAQs available.</p>';
+                container.innerHTML = '<p style="text-align: center; color: #a0aec0; padding: 2rem;">No FAQs available at this time.</p>';
             }
         } catch (error) {
             console.error('Failed to load FAQs:', error);
-            document.getElementById('faq-container').innerHTML = '<p style="text-align: center; color: #a0aec0; padding: 2rem;">Failed to load FAQs.</p>';
+            container.innerHTML = '<p style="text-align: center; color: #a0aec0; padding: 2rem;">Could not load FAQs. Please try again later.</p>';
         }
     }
 
-    function displayFAQs(faqs) {
-        const container = document.getElementById('faq-container');
-        
+    function displayFAQs(faqs, container) {
         container.innerHTML = faqs.map((faq, index) => `
-            <div class="faq-item bg-gray-800/50 border border-gray-700 rounded-lg mb-4 overflow-hidden">
-                <div class="faq-question" onclick="toggleFAQ(${index})" style="
+            <div class="faq-item bg-gray-800/50 border border-gray-700 rounded-lg overflow-hidden">
+                <div class="faq-question" data-index="${index}" style="
                     padding: 1rem; 
                     cursor: pointer; 
                     font-weight: 600;
-                    border-bottom: 1px solid #4a5568;
+                    border-bottom: 1px solid transparent;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
@@ -240,12 +262,10 @@
                     background: rgba(45, 55, 72, 0.5);
                 ">
                     <span>${faq.question}</span>
-                    <span id="icon-${index}" style="font-size: 18px; color: #68d391;">+</span>
+                    <span class="icon" style="font-size: 18px; color: #68d391;">+</span>
                 </div>
-                <div id="answer-${index}" class="faq-answer" style="
-                    padding: 1rem; 
+                <div class="faq-answer" data-index="${index}" style="
                     background: rgba(45, 55, 72, 0.3);
-                    display: none;
                     line-height: 1.6;
                     color: #e2e8f0;
                 ">
@@ -253,18 +273,24 @@
                 </div>
             </div>
         `).join('');
+
+        // Add event listeners after rendering
+        container.querySelectorAll('.faq-question').forEach(el => {
+            el.addEventListener('click', () => {
+                toggleFAQ(el.dataset.index);
+            });
+        });
     }
 
     function toggleFAQ(index) {
-        const answer = document.getElementById(`answer-${index}`);
-        const icon = document.getElementById(`icon-${index}`);
+        const question = document.querySelector(`.faq-question[data-index='${index}']`);
+        const answer = document.querySelector(`.faq-answer[data-index='${index}']`);
         
-        if (answer.style.display === 'none') {
-            answer.style.display = 'block';
-            icon.textContent = '−';
-        } else {
-            answer.style.display = 'none';
-            icon.textContent = '+';
+        if (answer) {
+            const isOpen = answer.classList.toggle('open');
+            question.classList.toggle('open');
+            question.style.borderBottomColor = isOpen ? 'var(--color-gray-700)' : 'transparent';
+            question.querySelector('.icon').textContent = isOpen ? '−' : '+';
         }
     }
 
